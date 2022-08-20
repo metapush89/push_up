@@ -1,7 +1,6 @@
 import random, os
 
 content = f"""
-# Generate a basic flask application
 import os
 from flask import Flask
 app = Flask(__name__)
