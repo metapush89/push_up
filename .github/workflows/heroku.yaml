@@ -44,11 +44,22 @@ jobs:
           remote_branch: master # <- Include this:
           stack: "heroku-22"
           appdir: /server
+      - name: Generate app
+        run: python ./herokuImg.py
+      - uses: akhileshns/heroku-deploy@v3.12.12 #This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME_4}} #Heroku App Name that will be pushed out
+          heroku_email: ${{secrets.HEROKU_EMAIL}} #Your Heroku Login Email
+          remote_branch: master # <- Include this:
+          stack: "heroku-22"
+          appdir: /server
       - name: Ping Site
         run: |
           sudo apt-get install -y curl && \
           curl ${{secrets.HEROKU_APP_NAME_1}}.herokuapp.com & \
           curl ${{secrets.HEROKU_APP_NAME_2}}.herokuapp.com & \
           curl ${{secrets.HEROKU_APP_NAME_3}}.herokuapp.com & \
+          curl ${{secrets.HEROKU_APP_NAME_4}}.herokuapp.com & \
 
 
