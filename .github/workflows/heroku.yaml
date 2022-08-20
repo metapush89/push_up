@@ -30,14 +30,6 @@ jobs:
           stack: "heroku-20"
           buildpack: ${{secrets.HEROKU_BUILDPACK_2}}
           appdir: /server
-      - name: curl
-        uses: wei/curl@master
-        with:
-          args: curl ${{secrets.HEROKU_APP_NAME_1}}.herokuapp.com
-      - name: curl
-        uses: wei/curl@master
-        with:
-          args: curl ${{secrets.HEROKU_APP_NAME_2}}.herokuapp.com
       - name: Ping Site
         run: |
           sudo apt-get install -y curl && \
