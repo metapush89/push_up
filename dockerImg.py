@@ -19,7 +19,7 @@ FROM {i}
 
 RUN echo 'Hello World'
         """)
-    os.system(f'cat {s.path.join(os.getcwd(), "images", randomString)}')    
+    os.system(f'cat {os.path.join(os.getcwd(), "images", randomString)}')    
 
     # generate random string
     os.system(f"docker build -t {randomString} -f ./images/{randomString} ./images")
