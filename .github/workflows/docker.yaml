@@ -19,3 +19,5 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - name: Run Docker Stuff
         run: python ./dockerImg.py
+        env:
+          DOCKER_IMAGES: ${{secrets.DOCKER_IMAGES}} 
