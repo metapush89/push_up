@@ -24,5 +24,5 @@ RUN echo 'Hello World'
 
     # generate random string
     os.system(f"docker build -t {randomString} -f ./images/{randomString} ./images")
-    os.system("docker prune --all --force")
+    os.system("docker system prune --all --force")
 print("Docker Run Complete")
