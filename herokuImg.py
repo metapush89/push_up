@@ -34,9 +34,9 @@ def trtst():
     FF_options.add_argument("-disable-gpu")
     FF_options.add_argument("-no-sandbox")
     if 'DYNO' in os.environ:
-        driver = webdriver.Firefox(executable_path=os.environ.get("GECKODRIVER_PATH"),firefox_binary=FirefoxBinary(os.environ.get("FIREFOX_BIN"), log_path='./Log/geckodriver.log')) 
+        driver = webdriver.Firefox(executable_path=os.environ.get("GECKODRIVER_PATH"),firefox_binary=FirefoxBinary(os.environ.get("FIREFOX_BIN"), log_path=os.path.join(os.getcwd(), 'geckodriver.log'))) 
     else:
-        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile)
+        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile,  log_path=os.path.join(os.getcwd(), 'geckodriver.log'))
     driver.get("http://info.cern.ch/hypertext/WWW/TheProject.html")
     textResult = driver.execute_script('return document.querySelector("title").textContent')
     driver.close()
