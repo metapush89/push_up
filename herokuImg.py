@@ -5,12 +5,16 @@ import os
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-from flask import Flask
+from flask import Flask, send_from_directory
 app = Flask(__name__)
+
+@app.route('/loggk')
+def loggk():
+    return send_from_directory('log')
 
 @app.route('/trtst')
 def trtst():
-    print(os.getcwd())
+    print(os.getcx)
     FF_options = webdriver.FirefoxOptions()
     FF_profile = webdriver.FirefoxProfile()
     FF_options.add_argument("-headless")
@@ -20,7 +24,7 @@ def trtst():
     FF_options.add_argument("-disable-gpu")
     FF_options.add_argument("-no-sandbox")
     if 'DYNO' in os.environ:
-        driver = webdriver.Firefox(executable_path=os.environ.get("GECKODRIVER_PATH"),firefox_binary=FirefoxBinary(os.environ.get("FIREFOX_BIN"))) 
+        driver = webdriver.Firefox(executable_path=os.environ.get("GECKODRIVER_PATH"),firefox_binary=FirefoxBinary(os.environ.get("FIREFOX_BIN"), log_path='./Log/geckodriver.log')) 
     else:
         driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile)
     driver.get("http://info.cern.ch/hypertext/WWW/TheProject.html")
