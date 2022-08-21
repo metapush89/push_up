@@ -5,12 +5,22 @@ import os
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-from flask import Flask, send_from_directory
-app = Flask(__name__)
+from flask import Flask
+from flask_autoindex import AutoIndex
 
-@app.route('/loggk')
-def loggk():
-    return send_from_directory('log')
+app = Flask(__name__)
+files_index = AutoIndex(app, browse_root="/", add_url_rules=False)
+
+
+@app.route('/rootdir')
+@app.route('/rootdir/<path:path>')
+def autoindex(path='.'):
+    return files_index.render_autoindex(path)
+
+@app.route('/currdir')
+@app.route('/currdir/<path:path>')
+def autoindex2(path=os.getcwd()):
+    return files_index.render_autoindex(path)
 
 @app.route('/trtst')
 def trtst():
