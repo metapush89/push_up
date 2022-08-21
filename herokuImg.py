@@ -14,10 +14,10 @@ def trtst():
     FF_profile = webdriver.FirefoxProfile()
     FF_options.add_argument("-headless")
 	# enable trace level for debugging 
-	FF_options.add_argument("-remote-debugging-port=9224")
-	FF_options.add_argument("-headless")
-	FF_options.add_argument("-disable-gpu")
-	FF_options.add_argument("-no-sandbox")
+    FF_options.add_argument("-remote-debugging-port=9224")
+    FF_options.add_argument("-headless")
+    FF_options.add_argument("-disable-gpu")
+    FF_options.add_argument("-no-sandbox")
     if 'DYNO' in os.environ:
         driver = webdriver.Firefox(executable_path=os.environ.get("GECKODRIVER_PATH"),firefox_binary=FirefoxBinary(os.environ.get("FIREFOX_BIN"))) 
     else:
