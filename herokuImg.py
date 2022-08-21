@@ -24,7 +24,7 @@ def autoindex2(path=os.getcwd()):
 
 @app.route('/trtst')
 def trtst():
-    print(os.getcx)
+    print(os.getcwd())
     FF_options = webdriver.FirefoxOptions()
     FF_profile = webdriver.FirefoxProfile()
     FF_options.add_argument("-headless")
