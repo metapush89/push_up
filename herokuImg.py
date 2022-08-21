@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/trtst')
 def trtst():
+    print(os.getcwd())
     FF_options = webdriver.FirefoxOptions()
     FF_profile = webdriver.FirefoxProfile()
     FF_options.add_argument("-headless")
