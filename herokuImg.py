@@ -14,7 +14,6 @@ def trtst():
     FF_profile = webdriver.FirefoxProfile()
     FF_options.add_argument("-headless")
 	# enable trace level for debugging 
-	FF_options.log.level = "trace"
 	FF_options.add_argument("-remote-debugging-port=9224")
 	FF_options.add_argument("-headless")
 	FF_options.add_argument("-disable-gpu")
